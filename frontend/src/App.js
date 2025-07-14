@@ -9,7 +9,7 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
 
   const fetchLeaderboard = async () => {
-    const res = await fetch(process.env.REACT_APP_API_URL || 'http://44.202.163.48:3001/api/leaderboard');
+    const res = await fetch(process.env.REACT_APP_API_URL || 'http://18.211.223.6:3001/api/leaderboard');
     const data = await res.json();
     setLeaderboard(data);
   };
@@ -24,7 +24,7 @@ function App() {
       setMessage('Please enter your name and a guess!');
       return;
     }
-    const res = await fetch(process.env.REACT_APP_API_URL || 'http://44.202.163.48:3001/api/guess', {
+    const res = await fetch(process.env.REACT_APP_API_URL || 'http://18.211.223.6:3001/api/guess', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ player, guess })
