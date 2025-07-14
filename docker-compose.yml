@@ -22,7 +22,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      REACT_APP_API_URL: "http://44.202.163.48:3001"
+      REACT_APP_API_URL: "http://18.211.223.6:3001"
     depends_on:
       - backend
 volumes:
