@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/satyapadamati/Number_Guessing_Dockers.git'
+            }
+        }
+        
+        stage('Cleanup Docker Environment') {
+            steps {
+                echo 'Stopping and removing old containers, images, volumes...'
+                sh '''
+                    docker-compose down --volumes --remove-orphans || true
+                    docker system prune -a -f || true
+                '''
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker-compose build'
+            }
+        }
+
+        stage('Docker Run') {
+            steps {
+                sh 'docker-compose up -d'
+            }
+        }
+    stage('Print Endpoint') {
+    steps {
+        script {
+            def publicIp = sh(script: "curl -s http://checkip.amazonaws.com", returnStdout: true).trim()
+            echo "Your application is running at: http://${publicIp}:<PORT>"
+        }
+    }
+}
+
+    }
+}
