@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="App">
       <h1>Number Guessing Game</h1>
-      <p>Guess a number between 1 and 100!</p>
+      <p>Guess a number between 1 to 100!</p>
       {!gameOver ? (
         <form onSubmit={handleSubmit}>
           <input
