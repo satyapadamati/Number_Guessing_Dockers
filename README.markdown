@@ -100,6 +100,8 @@ This project consists of:
   Clear the Docker build cache and retry:
   ```bash
   docker-compose build --no-cache
+
+#sample commit
   ```
 
 ## Contributing
